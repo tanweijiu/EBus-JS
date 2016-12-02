@@ -16,13 +16,15 @@ let isDebug = true;
  */
 function register(observer, eventName, func) {
     if (eventName && func) {
-        if (!observer)
+        if (!observer) {
             if (isDebug) console.warn(eventName, ', no observer can\'t remove event');
+        }
         events.push({
             eventName: eventName,
             func: func,
             observer: observer
         });
+        if (isDebug) console.log(events.length, " : ", eventName, ' registered\n ', func);
     } else {
         if (isDebug) console.error('event name || function can\'t not be null');
     }
@@ -36,6 +38,7 @@ function register(observer, eventName, func) {
  */
 function post(eventName, data) {
     if (eventName) {
+       if (isDebug)  console.log('ebus send: ', eventName);
         for (let i = 0; i < events.length; ++i) {
             let e = events[i];
             if (e.eventName === eventName) {
@@ -89,7 +92,7 @@ function unRegister(observer, eventName) {
         if (indexes.length > 0) {
             for (let i = 0; i < indexes.length; i++) {
                 events.splice(indexes[i], 1);
-                if (isDebug) console.log('unRegister event by  observer');
+                if (isDebug) console.log('unRegister event by  observer_', i);
             }
             return indexes.length;
         } else {
