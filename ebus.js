@@ -3,9 +3,9 @@
  * des: 事件通知机制工具
  */
 
-var events = [];
+let events = [];
 // todo 上线时这个最好关闭
-var isDebug = true;
+let isDebug = true;
 
 /**
  * 增加一个事件监听
@@ -36,10 +36,11 @@ function register(eventName, func, observer) {
  */
 function post(eventName, data) {
     if (eventName) {
-        for (var i = 0; i < events.length; ++i) {
-            var e = events[i];
+        for (let i = 0; i < events.length; ++i) {
+            let e = events[i];
             if (e.eventName === eventName) {
                 e.func(data);
+                if (isDebug) console.log('event: ',eventName," get a event_post");
             }
         }
     } else {
