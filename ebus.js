@@ -14,7 +14,7 @@ let isDebug = true;
  * @param {function} func
  * @param {any} observer
  */
-function register(eventName, func, observer) {
+function register(observer, eventName, func) {
     if (eventName && func) {
         if (!observer)
             if (isDebug) console.warn(eventName, ', no observer can\'t remove event');
@@ -40,7 +40,7 @@ function post(eventName, data) {
             let e = events[i];
             if (e.eventName === eventName) {
                 e.func(data);
-                if (isDebug) console.log('event: ',eventName," get a event_post");
+                if (isDebug) console.log('event: ', eventName, " get a event_post");
             }
         }
     } else {
@@ -55,7 +55,7 @@ function post(eventName, data) {
  * @param {any} observer 若只有observer为空，则删除所有名为eventName的事件
  * @returns
  */
-function unRegister(eventName, observer) {
+function unRegister(observer, eventName) {
     if (eventName && observer) {
         // 精准的删除某个页面下的某个注册事件监听
         for (let i = 0; i < events.length; ++i) {
