@@ -19,6 +19,8 @@ function register(observer, eventName, func) {
         if (!observer) {
             if (isDebug) console.warn(eventName, ', no observer can\'t remove event');
         }
+        // 把方法指向正确的上下文调用对象。否则将指向events列表里的event对象...
+        func = func.bind(observer);
         events.push({
             eventName: eventName,
             func: func,
@@ -38,11 +40,13 @@ function register(observer, eventName, func) {
  */
 function post(eventName, data) {
     if (eventName) {
-       if (isDebug)  console.log('ebus send: ', eventName);
+        if (isDebug) console.log('ebus send: ', eventName);
         for (let i = 0; i < events.length; ++i) {
             let e = events[i];
             if (e.eventName === eventName) {
-                e.func(data);
+
+                e.func(data, e.observer);
+
                 if (isDebug) console.log('event: ', eventName, " get a event_post");
             }
         }
@@ -74,7 +78,7 @@ function unRegister(observer, eventName) {
     } else if (eventName && !observer) {
         //删除所有名为eventName的事件
         let indexes = events.map((e, i) => e.eventName === eventName ? i : -1).filter(i => i >= 0).reverse();
-        console.log(indexes);
+        if (isDebug) console.log(indexes);
         if (indexes.length > 0) {
             for (let i = 0; i < indexes.length; i++) {
                 events.splice(indexes[i], 1);
@@ -88,7 +92,7 @@ function unRegister(observer, eventName) {
     } else if (!eventName && observer) {
         // 删除所有observer下的事件
         let indexes = events.map((e, i) => e.observer === observer ? i : -1).filter(i => i >= 0).reverse();
-        console.log(indexes);
+        if (isDebug) console.log(indexes);
         if (indexes.length > 0) {
             for (let i = 0; i < indexes.length; i++) {
                 events.splice(indexes[i], 1);
