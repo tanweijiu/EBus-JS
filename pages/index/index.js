@@ -22,7 +22,8 @@ Page({
         app.getUserInfo(function(userInfo) {
             //更新数据
             that.setData({
-                userInfo: userInfo
+                userInfo: userInfo,
+                motto: "欢迎" + userInfo.nickName + "使用ebus"
             });
             that.update();
         });
