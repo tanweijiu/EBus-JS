@@ -1,11 +1,12 @@
- EBus-JS
+ >EBus-JS
  <br>
- simplifies communication between pages for WeChatApp in JS
+ >>simplifies communication between pages for WeChatApp in JS
  基于微信小程序使用纯js编写的事件通知机制工具
  =============================
  <br> <br>
 
 ## **使用方式：**
+
 
 
 ### 在需要接受事件的page页引入js文件
@@ -50,7 +51,8 @@ let EBUS = require('ebus.js');
     */
    EBUS.post(CONSTANTS.EVENT_SEND_INDEX1, {/*数据，按需构造数据，不限制*/});
 ```
-
+>**demo效果**<br>
+>> ![Alt text](art/ebus.gif)
 ***
 
 ## **Todo List:**
