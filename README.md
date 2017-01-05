@@ -1,6 +1,6 @@
- >EBus-JS
+ EBus-JS
  <br>
- >>simplifies communication between pages for WeChatApp in JS
+ simplifies communication between pages for WeChatApp in JS
  基于微信小程序使用纯js编写的事件通知机制工具
  =============================
  <br> <br>
@@ -49,10 +49,21 @@ let EBUS = require('ebus.js');
         * @param {String} eventName
         * @param {any} data
     */
-   EBUS.post(CONSTANTS.EVENT_SEND_INDEX1, {/*数据，按需构造数据，不限制*/});
+   EBUS.post("自定义事件名字", {/*数据，按需构造数据，不限制*/});
 ```
->**demo效果**<br>
->> ![Alt text](art/ebus.gif)
+
+```javascript
+    /**todo 没完成*/
+    /**
+        * 发送一个sticky事件,只会被最先消费一次就会失效
+        * 
+        * @param {String} eventName
+        * @param {any} data
+    */
+   EBUS.post("自定义事件名字", {/*数据，按需构造数据，不限制*/});
+```
+**demo效果**<br>
+ ![Alt text](/art/ebus.gif)
 ***
 
 ## **Todo List:**
