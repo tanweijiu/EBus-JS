@@ -1,8 +1,8 @@
- EBus-JS
+# EBus-JS
  <br>
- simplifies communication between pages for WeChatApp in JS
+ ## simplifies communication between pages for WeChatApp in JS
  基于微信小程序使用纯js编写的事件通知机制工具
- =============================
+
  <br> <br>
 
 ## **使用方式：**
