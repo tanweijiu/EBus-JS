@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="textContainer">
+    <text class="textStyle">{{text}}</text>
+  </view>
+    <view class="textContainer">
+    <text class="textStyle" catchtap="sendDataFunc">点击发送数据：这是index2</text>
+  </view>
+</view>

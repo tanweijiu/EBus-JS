@@ -1,0 +1,12 @@
+<!-- index.wxml -->
+<view class="container">
+  <view bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <view class="usermotto">
+    <text class="textStyle" catchtap="sendDataFunc">点击发送数据：这是index1</text>
+  </view>
+</view>
