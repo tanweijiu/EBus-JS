@@ -20,7 +20,7 @@ function register(observer, eventName, func) {
             if (isDebug) console.warn(eventName, ', no observer can\'t remove event');
         }
         // 把方法指向正确的上下文调用对象。否则将指向events列表里的event对象...
-        func = func.bind(observer);
+        // func = func.bind(observer);
         events.push({
             eventName: eventName,
             func: func,
