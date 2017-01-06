@@ -1,9 +1,8 @@
 # EBus-JS
  <br>
-## simplifies communication between pages for WeChatApp in JS
-## 基于微信小程序使用纯js编写的事件通知机制工具
+## simplifies communication between pages for WeChatApp in JS <br>基于微信小程序使用纯js编写的事件通知机制工具
 
- <br> <br>
+ <br>
 
 ## **使用方式：**
 
@@ -13,6 +12,7 @@
 ```javascript
 let EBUS = require('ebus.js');
 ```
+ <br>
 ### 在需要接受事件的page页的onLoad或者其他非销毁结束生命周期调用中注册事件
 ```javascript
    onLoad: function() {
@@ -25,7 +25,7 @@ let EBUS = require('ebus.js');
         EBUS.register(this, "自定义事件名字", this.onRecivedEvent/*自定义接受事件*/);
    }
 ```
-
+ <br>
 ### 在注册过的page页的onUnLoad或者其他销毁结束生命周期调用中取消注册事件
 ```javascript
  onUnload: function() {
@@ -40,7 +40,7 @@ let EBUS = require('ebus.js');
     EBUS.unRegister(this, null);
   },
 ```
-
+ <br>
 ### the last one : 在想发送事件数据的地方，比如其他page页面，当然，你也可以在当前页面（应该没有人这么无聊的在当前页面使用这种方法吧）
 ```javascript
     /**
@@ -62,10 +62,11 @@ let EBUS = require('ebus.js');
     */
    EBUS.post("自定义事件名字", {/*数据，按需构造数据，不限制*/});
 ```
-**demo效果**<br>
+ <br>
+### **demo效果**
  ![Alt text](/art/ebus.gif)
 ***
-
+ <br>
 ## **Todo List:**
  + [ ] 发送延迟事件（postSticky）
  + [ ] ...
