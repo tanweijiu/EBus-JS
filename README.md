@@ -16,8 +16,8 @@ let EBUS = require('ebus.js');
 ### 在需要接受事件的page页的onLoad或者其他非销毁结束生命周期调用中注册事件
 ```javascript
    onLoad: function() {
-        /**为需要注册的事件注册 */
         /**
+            *为需要注册的事件注册  
             * @param {String} eventName
             * @param {function} func
             * @param {any} observer
@@ -29,8 +29,8 @@ let EBUS = require('ebus.js');
 ### 在注册过的page页的onUnLoad或者其他销毁结束生命周期调用中取消注册事件
 ```javascript
  onUnload: function() {
-     /**取消注册事件 */
      /**
+        *取消注册事件  
         * 删掉一个事件监听
         * 两个参数其中一个不能为空，
         * @param {String} eventName 若只有事件名字为空，则删除所有observer下的事件
@@ -53,8 +53,7 @@ let EBUS = require('ebus.js');
 ```
 
 ```javascript
-    /**todo 没完成*/
-    /**
+    /**todo 没完成 
         * 发送一个sticky事件,只会被最先消费一次就会失效
         * 
         * @param {String} eventName
