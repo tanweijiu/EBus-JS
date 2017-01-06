@@ -53,6 +53,7 @@ Page({
             text: '这是index1',
             priceId: 120,
         });
+
     },
 
     /*事件处理函数*/
@@ -60,5 +61,9 @@ Page({
         wx.navigateTo({
             url: '../second/second?index=1'
         });
+        console.log(EBUS.getSticky(CONSTANTS.EVENT_SEND_INDEX1));
+        EBUS.removeSticky(CONSTANTS.EVENT_SEND_INDEX1);
+        console.log(EBUS.getSticky(CONSTANTS.EVENT_SEND_INDEX1));
+
     },
 })

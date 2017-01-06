@@ -46,7 +46,7 @@ onUnload: function() {
 ```
 
 
-### the last one : 在想发送事件数据的地方，比如其他page页面，当然，你也可以在当前页面（应该没有人这么无聊的在当前页面使用这种方法吧）
+### 在想发送事件数据的地方，比如其他page页面，当然，你也可以在当前页面（应该没有人这么无聊的在当前页面使用这种方法吧）
 
 ```js 
 /**
@@ -60,14 +60,28 @@ EBUS.post("自定义事件名字", {/*数据，按需构造数据，不限制*/}
 
 ```js 
 /**
-  *todo 没完成 
-  * 发送一个sticky事件,只会被最先消费一次就会失效
+  * 发送一个sticky事件,会被先消费一次,然后保存下来，之后能通过getSticky获取
   * 
   * @param {String} eventName
   * @param {any} data
  */
-EBUS.post("自定义事件名字", {/*数据，按需构造数据，不限制*/});
+EBUS.postSticky("自定义事件名字", {/*数据，按需构造数据，不限制*/});
 ```
+
+### 获取sticky事件数据（同一事件名的数据仅保存最新的一份）
+
+```js
+EBUS.getSticky('自定义事件名字');
+```
+
+### 删除sticky事件数据（置为null）
+
+```js
+EBUS.removeSticky('自定义事件名字');
+```
+
+
+ 
 
 
 ### **demo效果**<br>
@@ -77,7 +91,9 @@ EBUS.post("自定义事件名字", {/*数据，按需构造数据，不限制*/}
 
 
 ## **Todo List:**
- + [ ] 发送延迟事件（postSticky）
+ + [x] 发送延迟事件数据（postSticky）
+ + [x] 删除延迟事件数据（removeSticky）
+ + [x] 获取延迟事件数据（getSticky）
  + [ ] ...
  
 

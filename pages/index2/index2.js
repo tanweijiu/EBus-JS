@@ -28,15 +28,21 @@ Page({
 
     /*发送数据*/
     sendDataFunc: function() {
-        EBUS.post(CONSTANTS.EVENT_SEND_INDEX1, { /*数据*/
-            text: '这是index2',
+        // EBUS.post(CONSTANTS.EVENT_SEND_INDEX1, { /*数据*/
+        //     text: '这是index2',
+        //     other: {
+        //         phone: 110
+        //     }
+        // });
+        // EBUS.post(CONSTANTS.EVENT_SEND_INDEX2, { /*数据*/
+        //     text: '这是index2',
+        //     priceId: 120,
+        // });
+         EBUS.postSticky(CONSTANTS.EVENT_SEND_INDEX1, { /*数据*/
+            text: '这是index2_sticky',
             other: {
                 phone: 110
             }
-        });
-        EBUS.post(CONSTANTS.EVENT_SEND_INDEX2, { /*数据*/
-            text: '这是index2',
-            priceId: 120,
         });
     },
 

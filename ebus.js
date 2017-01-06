@@ -3,11 +3,16 @@
  * des: 事件通知机制工具
  */
 
+//注册的监听回调
 let events = [];
+// 延迟接受事件存储
+let stickies = {};
 // todo 上线时这个最好关闭
-let isDebug = true;
+let isDebug = false;
+
 
 /**
+ * register a function for (observer && eventName)
  * 增加一个事件监听
  * 
  * @param {String} eventName
@@ -33,7 +38,8 @@ function register(observer, eventName, func) {
 }
 
 /**
- * 发送一个事件
+ * post a normal event
+ * 发送一个事件,这个事件会被立马消费掉
  * 
  * @param {String} eventName
  * @param {any} data
@@ -53,6 +59,40 @@ function post(eventName, data) {
     } else {
         if (isDebug) console.error('event name  can\'t not be null');
     }
+}
+
+/**
+ * post  a  sticky event
+ * 发送一个延迟sticky事件
+ * 
+ * @param {String} eventName
+ * @param {any} data
+ */
+function postSticky(eventName, data) {
+    post(eventName, data);
+    stickies[eventName] = data;
+    if (isDebug) console.log("post a sticky: " + eventName);
+}
+
+/**
+ * 获取最新的名为eventName的data(空为undefined)
+ * 
+ * @param {any} eventName
+ */
+function getSticky(eventName) {
+    return stickies[eventName];
+}
+
+/**
+ * 
+ * remove sticky event which name are eventName
+ * 删除名为eventName的事件通知
+ * 
+ * @param {any} eventName
+ */
+function removeSticky(eventName) {
+    stickies[eventName] = null;
+    if (isDebug) console.log("remove a sticky: " + eventName);
 }
 
 /**
@@ -109,8 +149,29 @@ function unRegister(observer, eventName) {
     return 0;
 }
 
+/*测试*/
+function test() {
+    let start = new Date().getTime();
+    for (var i = 0; i < 100; ++i) {
+        register(this, "" + i, (data) => {
+            console.log("收到事件：", data.a);
+        });
+        postSticky("" + i, {
+            a: i
+        });
+        removeSticky("" + i);
+        
+    }
+    console.log("time:", new Date().getTime() - start);
+}
+
+
+
 module.exports = {
     register: register,
     post: post,
+    postSticky: postSticky,
+    removeSticky: removeSticky,
+    getSticky: getSticky,
     unRegister: unRegister
 }
