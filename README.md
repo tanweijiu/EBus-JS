@@ -9,13 +9,13 @@
 
 
 ### 在需要接受事件的page页引入js文件
-```javascript
+```javascript 
 let EBUS = require('ebus.js');
 ```
 
  <br>
 ### 在需要接受事件的page页的onLoad或者其他非销毁结束生命周期调用中注册事件
-```javascript
+```javascript  
    onLoad: function() {
         /**
             *为需要注册的事件注册  
@@ -29,7 +29,7 @@ let EBUS = require('ebus.js');
 
  <br>
 ### 在注册过的page页的onUnLoad或者其他销毁结束生命周期调用中取消注册事件
-```javascript
+```javascript  
  onUnload: function() {
      /**
         *取消注册事件  
@@ -45,7 +45,7 @@ let EBUS = require('ebus.js');
 
  <br>
 ### the last one : 在想发送事件数据的地方，比如其他page页面，当然，你也可以在当前页面（应该没有人这么无聊的在当前页面使用这种方法吧）
-```javascript
+```javascript 
     /**
         * 发送一个事件
         * 
@@ -55,7 +55,7 @@ let EBUS = require('ebus.js');
    EBUS.post("自定义事件名字", {/*数据，按需构造数据，不限制*/});
 ```
 
-```javascript
+```javascript 
     /**todo 没完成 
         * 发送一个sticky事件,只会被最先消费一次就会失效
         * 
