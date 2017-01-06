@@ -48,7 +48,7 @@ onUnload: function() {
 ### the last one : 在想发送事件数据的地方，比如其他page页面，当然，你也可以在当前页面（应该没有人这么无聊的在当前页面使用这种方法吧）
 
 ```js 
-/*
+/**
         * 发送一个事件
         * 
         * @param {String} eventName
@@ -58,7 +58,8 @@ EBUS.post("自定义事件名字", {/*数据，按需构造数据，不限制*/}
 ```
 
 ```javascript 
-/*todo 没完成 
+/**
+       *todo 没完成 
         * 发送一个sticky事件,只会被最先消费一次就会失效
         * 
         * @param {String} eventName
